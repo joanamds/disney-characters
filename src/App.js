@@ -9,6 +9,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       disneyCharacter: '',
+      search: false,
     }
   }
 
@@ -25,11 +26,12 @@ class App extends React.Component {
     dispatch(fetchCharacter(disneyCharacter));
     this.setState({
       disneyCharacter: '',
+      search: true,
     });
   }
 
   render() {
-    const { disneyCharacter } = this.state;
+    const { disneyCharacter, search } = this.state;
     return (
       <div className="App">
         <h1>Disney Characters</h1>
@@ -47,9 +49,11 @@ class App extends React.Component {
             Search
           </button>
         </div>
-        <div className="character-found">
-            <CharacterCard />
-        </div>
+        {search && (
+          <div className="character-found">
+              <CharacterCard />
+          </div>
+        )}
       </div>
     );
   }

@@ -1,4 +1,4 @@
-import { GET_CHARACTER, REQUEST_CHARACTER } from "../reducers";
+import { GET_CHARACTER, REQUEST_CHARACTER, NOT_FOUND } from "../reducers";
 
 export const requestAPI = () => ({
   type: REQUEST_CHARACTER,
@@ -7,6 +7,10 @@ export const requestAPI = () => ({
 export const getCharacter = (payload) => ({
   type: GET_CHARACTER,
   payload,
+});
+
+export const notFound = () => ({
+  type: NOT_FOUND,
 })
 
 export const fetchCharacter = (name) => {
@@ -16,8 +20,8 @@ export const fetchCharacter = (name) => {
       const response = await fetch(`https://api.disneyapi.dev/character?name=${name}`);
       const characterFound = await response.json();
       const { data } = characterFound;
-      console.log(data[0]);
-      dispatch(getCharacter(data[0]));
+      if (data === undefined) return dispatch(notFound());
+      return dispatch(getCharacter(data[0]));
     } catch(error) {
       console.error(error);
     }
