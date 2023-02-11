@@ -36,6 +36,7 @@ const rootReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         characterFound: false,
+        searchCharacter: false,
       };
     }
     default:

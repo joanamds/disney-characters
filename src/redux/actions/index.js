@@ -20,7 +20,7 @@ export const fetchCharacter = (name) => {
       const response = await fetch(`https://api.disneyapi.dev/character?name=${name}`);
       const characterFound = await response.json();
       const { data } = characterFound;
-      if (data === undefined) return dispatch(notFound());
+      if (data.length === 0) return dispatch(notFound());
       return dispatch(getCharacter(data[0]));
     } catch(error) {
       console.error(error);
