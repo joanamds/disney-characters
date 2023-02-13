@@ -12,10 +12,10 @@ class CharacterCard extends React.Component {
       <div>
         {searchCharacter ? <img src={LoadingDisney} alt="Loading disney"/>
           : (
-            <Card sx={{maxWidth: 250}} centered>
+            <Card sx={{maxWidth: 250, padding: 6}} centered>
               {characterFound ?
                 <CardActionArea>
-                  <Typography component="div" variant="h5" gutterBottom>
+                  <Typography sx={{textAlign: 'center'}} component="div" variant="h5" gutterBottom>
                     {name} 
                   </Typography>
                   <CardMedia
