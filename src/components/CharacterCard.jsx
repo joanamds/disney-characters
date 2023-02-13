@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MickeyConfused from '../images/mickey-confused.gif';
 import LoadingDisney from '../images/loading-disney.gif';
-import { Card } from '@mui/material';
+import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
 
 class CharacterCard extends React.Component {
   render() {
@@ -12,19 +12,27 @@ class CharacterCard extends React.Component {
       <div>
         {searchCharacter ? <img src={LoadingDisney} alt="Loading disney"/>
           : (
-            <Card>
+            <Card sx={{maxWidth: 250}} centered>
               {characterFound ?
-                <>
-                  <h3> {name} </h3>
-                  <img src={imageUrl} alt={`imagem da personagem: ${name}`} />
+                <CardActionArea>
+                  <Typography component="div" variant="h5" gutterBottom>
+                    {name} 
+                  </Typography>
+                  <CardMedia
+                    component="img"
+                    image={imageUrl}
+                    width="50"
+                    alt={`imagem da personagem: ${name}`} />
+                  <CardContent>
                   <h4>Aparece em:</h4>
-                  <p> {!films ? `Série: ${tvShows}` : `Filme: ${films}`} </p>
-                </>
+                    <p> {!films ? `Série: ${tvShows}` : `Filme: ${films}`} </p>
+                  </CardContent>
+                </CardActionArea>
                 : (
-                  <div>
+                  <CardActionArea>
                     <img src={MickeyConfused} alt="Mickey Mouse confuso" width="200" />
                     <h3>Personagem não encontrado</h3>
-                  </div>
+                  </CardActionArea>
                 )
               }
               </Card>
