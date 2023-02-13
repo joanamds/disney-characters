@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './CharacterCard.css';
 import MickeyConfused from '../images/mickey-confused.gif';
 import LoadingDisney from '../images/loading-disney.gif';
+import { Card } from '@mui/material';
 
 class CharacterCard extends React.Component {
   render() {
@@ -12,7 +12,7 @@ class CharacterCard extends React.Component {
       <div>
         {searchCharacter ? <img src={LoadingDisney} alt="Loading disney"/>
           : (
-            <div className="character-card">
+            <Card>
               {characterFound ?
                 <>
                   <h3> {name} </h3>
@@ -27,7 +27,7 @@ class CharacterCard extends React.Component {
                   </div>
                 )
               }
-              </div>
+              </Card>
           )
         }
       </div>

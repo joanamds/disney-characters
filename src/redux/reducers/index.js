@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   imageUrl: '',
   film: '',
   tvShows: '',
+  characters: [],
 }
 
 export const GET_CHARACTER = 'GET_CHARACTER';

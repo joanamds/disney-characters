@@ -1,7 +1,6 @@
 import React from 'react';
 import { fetchCharacter } from './redux/actions';
 import { connect } from 'react-redux';
-import './App.css';
 import CharacterCard from './components/CharacterCard';
 
 class App extends React.Component {
@@ -10,6 +9,7 @@ class App extends React.Component {
     this.state = {
       disneyCharacter: '',
       search: false,
+      characters: [],
     }
   }
 
@@ -52,8 +52,7 @@ class App extends React.Component {
         {search && (
           <div className="character-found">
               <CharacterCard />
-          </div>
-        )}
+          </div>)}
       </div>
     );
   }
