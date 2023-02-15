@@ -5,9 +5,8 @@ import CharacterCard from './components/CharacterCard';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import { Divider, Paper } from '@mui/material';
+import { Box, Divider, Paper } from '@mui/material';
 import './App.css';
-import { Container } from '@mui/system';
 
 class App extends React.Component {
   constructor(props) {
@@ -41,7 +40,11 @@ class App extends React.Component {
     return (
       <div>
         <h1>Disney Characters</h1>
-        <Container fixed>
+        <Box
+          display="flex"
+          justifyContent="center"
+          flexWrap="wrap"
+        >
         <Paper
           component="form"
           sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 700, marginBottom: 5 }}
@@ -61,12 +64,12 @@ class App extends React.Component {
           >
             <SearchIcon />
           </IconButton>
-        </Paper>
+          </Paper>
+        </Box>
         {search && (
           <div className="character-found">
               <CharacterCard />
           </div>)}
-          </Container>
       </div>
     );
   }
