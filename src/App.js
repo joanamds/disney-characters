@@ -2,11 +2,7 @@ import React from 'react';
 import { fetchCharacter } from './redux/actions';
 import { connect } from 'react-redux';
 import CharacterCard from './components/CharacterCard';
-import InputBase from '@mui/material/InputBase';
-import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
-import { Box, Divider, Paper } from '@mui/material';
-import './App.css';
+import Header from './components/Header';
 
 class App extends React.Component {
   constructor(props) {
@@ -24,48 +20,31 @@ class App extends React.Component {
     });
   }
 
-  handleClick = (event) => {
-    event.preventDefault();
-    const { disneyCharacter } = this.state;
-    const { dispatch } = this.props;
-    dispatch(fetchCharacter(disneyCharacter));
-    this.setState({
-      disneyCharacter: '',
-      search: true,
-    });
+  handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      const { disneyCharacter } = this.state;
+      if (disneyCharacter.length >= 2) {
+        const { dispatch } = this.props;
+        dispatch(fetchCharacter(disneyCharacter));
+        this.setState({
+          disneyCharacter: '',
+          search: true,
+        });
+      }
+    }
   }
+
 
   render() {
     const { disneyCharacter, search } = this.state;
     return (
       <div>
-        <h1>Disney Characters</h1>
-        <Box
-          display="flex"
-          justifyContent="center"
-          flexWrap="wrap"
-        >
-        <Paper
-          component="form"
-          sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 700, marginBottom: 5 }}
-        >
-          <InputBase
-            sx={{ ml: 1, flex: 1 }}
-            type="text"
-            value={ disneyCharacter }
-            placeholder="Pesquise um personagem"
-            onChange={this.handleChange}
-          />
-          <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-          <IconButton
-            type="button"
-            onClick={this.handleClick}
-            sx={{ p: '10px' }} aria-label="search"
-          >
-            <SearchIcon />
-          </IconButton>
-          </Paper>
-        </Box>
+        <Header
+          handleChange={this.handleChange}
+          handleKeyPress={this.handleKeyPress}
+          disneyCharacter={disneyCharacter}
+        />
         {search && (
           <div className="character-found">
               <CharacterCard />
