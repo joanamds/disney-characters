@@ -1,11 +1,14 @@
 import React from 'react';
-import { fetchCharacter } from './redux/actions';
+import { fetchCharacter, fetchAllCharacters } from './redux/actions';
 import { connect } from 'react-redux';
 import CharacterCard from './components/CharacterCard';
 import Header from './components/Header';
 import './App.css';
 import { Container } from '@mui/joy';
-import SteamboatWillie from './images/steamboat-willie.gif';
+import LoadingDisney from './images/loading-disney.gif';
+import Grid from '@mui/joy/Grid';
+
+// import SteamboatWillie from './images/steamboat-willie.gif';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,7 +16,6 @@ class App extends React.Component {
     this.state = {
       disneyCharacter: '',
       search: false,
-      characters: [],
     }
   }
 
@@ -38,9 +40,17 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(fetchAllCharacters());
+  }
+
 
   render() {
     const { disneyCharacter, search } = this.state;
+    const { name, imageUrl, films, tvShows, characterFound, searchCharacter, characters } = this.props;
+    console.log(characters);
+
     return (
       <div>
         <Header
@@ -48,29 +58,69 @@ class App extends React.Component {
           handleKeyPress={this.handleKeyPress}
           disneyCharacter={disneyCharacter}
         />
-        <Container style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 40
-        }}>
-        {search ? (
-              <CharacterCard />
-          ) : (
-              <div>
-                <img
-                  src={SteamboatWillie}
-                  alt="steamboat willie" width="500"
-                  style={{ borderRadius: 50, marginTop: 100 }}
-                />
-                <h1
-                  style={{ color: 'white', fontFamily: 'Roboto', textAlign: 'center' }}
+        {searchCharacter ?
+          <Container style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: 250,
+          }}>
+            <img src={LoadingDisney} alt="Loading disney" width="300" />
+          </Container>
+          : (
+            <div>
+              {search ? (
+                <Container style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginTop: 40,
+                  marginBottom: 80,
+                }}>
+                  <CharacterCard
+                    name={name}
+                    imageUrl={imageUrl}
+                    films={films}
+                    tvShows={tvShows}
+                    characterFound={characterFound}
+                  />
+                </Container>
+              ) : (
+                <Grid
+                  container
+                  spacing={{ xs: 2, md: 3 }}
+                  columns={{ xs: 4, sm: 8, md: 12 }}
+                  sx={{ flexGrow: 1 }}
+                  alignItems="center"
+                  justifyContent="center"
                 >
-                  Vamos lá!
-                </h1>
-              </div>
+                  {characters.map((character) => {
+                    return (<CharacterCard
+                      name={character.name}
+                      imageUrl={character.imageUrl}
+                      films={character.films[0]}
+                      tvShows={character.tvShows[0]}
+                      characterFound={characterFound}
+                      searchCharacter={searchCharacter}
+                    />)
+                  })}
+                </Grid>
+              )}
+            </div>
           )}
-        </Container>
       </div>
     );
   }
 }
 
-export default connect()(App);
+const mapStateToProps = (state) => ({
+  characterFound: state.characterFound,
+  name: state.name,
+  imageUrl: state.imageUrl,
+  films: state.films,
+  tvShows: state.tvShows,
+  searchCharacter: state.searchCharacter,
+  characters: state.characters,
+});
+
+export default connect(mapStateToProps)(App);

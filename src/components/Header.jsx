@@ -7,6 +7,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import MickeyIcon from '../images/mickey-logo.png';
 import {Search, SearchIconWrapper, StyledInputBase } from './InputComponents';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Button, IconButton } from '@mui/material';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 const theme = createTheme({
   palette: {
@@ -62,7 +64,23 @@ class Header extends React.Component {
                 onKeyPress={handleKeyPress}
                 value={disneyCharacter}
               />
-            </Search>
+              </Search>
+              <Button
+                component="a"
+                href="https://disneyapi.dev/"
+                target="_blank"
+                sx={{ my: 2, color: 'white', display: 'block', marginLeft: 10 }}
+              >
+                Disney API
+              </Button>
+              <IconButton
+                component="a"
+                href="https://github.com/joanamds/disney-characters"
+                target="_blank"
+                sx={{ my: 2, color: 'white', display: 'block', marginLeft: 5 }}
+              >
+                <GitHubIcon />
+              </IconButton>
           </Toolbar>
         </Container>
         </AppBar>
