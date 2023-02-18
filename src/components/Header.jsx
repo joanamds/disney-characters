@@ -37,7 +37,7 @@ class Header extends React.Component {
               variant="h6"
               noWrap
               component="a"
-              href="/"
+              href="/disney-characters"
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
