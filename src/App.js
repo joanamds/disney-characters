@@ -3,6 +3,9 @@ import { fetchCharacter } from './redux/actions';
 import { connect } from 'react-redux';
 import CharacterCard from './components/CharacterCard';
 import Header from './components/Header';
+import './App.css';
+import { Container } from '@mui/joy';
+import SteamboatWillie from './images/steamboat-willie.gif';
 
 class App extends React.Component {
   constructor(props) {
@@ -45,10 +48,26 @@ class App extends React.Component {
           handleKeyPress={this.handleKeyPress}
           disneyCharacter={disneyCharacter}
         />
-        {search && (
-          <div className="character-found">
+        <Container style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 40
+        }}>
+        {search ? (
               <CharacterCard />
-          </div>)}
+          ) : (
+              <div>
+                <img
+                  src={SteamboatWillie}
+                  alt="steamboat willie" width="500"
+                  style={{ borderRadius: 50, marginTop: 100 }}
+                />
+                <h1
+                  style={{ color: 'white', fontFamily: 'Roboto', textAlign: 'center' }}
+                >
+                  Vamos lá!
+                </h1>
+              </div>
+          )}
+        </Container>
       </div>
     );
   }

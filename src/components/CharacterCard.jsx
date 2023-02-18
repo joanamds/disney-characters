@@ -33,11 +33,12 @@ class CharacterCard extends React.Component {
                     }}
                   />
                   <CardContent sx={{ justifyContent: 'flex-end' }}>
-                    <Typography level="h2" fontSize="lg" textColor="#fff" mb={1}>
+                    <Typography level="h2" fontFamily="Roboto" fontSize="lg" textColor="#fff" mb={1}>
                       {name}
                     </Typography>
                     <Typography
                       textColor="neutral.300"
+                      fontFamily="Roboto"
                       startDecorator={!films ? <TvIcon /> : <MovieIcon />}
                     >
                       {!films ? `Série: ${tvShows}` : `Filme: ${films}`}
@@ -64,6 +65,7 @@ class CharacterCard extends React.Component {
                       <Typography
                         textColor="neutral.300"
                         startDecorator={<CancelIcon />}
+                        fontFamily="Roboto"
                       >
                         Personagem não encontrado
                       </Typography>
