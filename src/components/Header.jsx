@@ -40,7 +40,7 @@ class Header extends React.Component {
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
-                fontFamily: 'New Walt Disney Font',
+                fontFamily: 'WaltographRegular',
                 fontWeight: 700,
                 letterSpacing: '.3rem',
                 color: 'white',
