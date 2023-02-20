@@ -46,6 +46,8 @@ class App extends React.Component {
   }
 
   onClickHeader = () => {
+    const { dispatch } = this.props;
+    dispatch(fetchAllCharacters());
     this.setState({
       search: false,
     });
