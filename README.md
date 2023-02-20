@@ -1,4 +1,4 @@
-# :sparkles: Disney Characters
+# <img src="https://i0.wp.com/www.multarte.com.br/wp-content/uploads/2019/02/mickey-mouse-logo-vector-free-download.gif?resize=696%2C698&ssl=1" alt="Mickey icon" width="40"/> Disney Characters
 
 Há alguns meses atrás quando estava aprendendo Redux eu resolvi criar uma aplicação para praticar os conhecimentos recém adquiridos, para isso resolvi procurar se existia alguma API que tivesse informações sobre algo que eu gosto. Encontrei a [API da Disney](https://disneyapi.dev/) e como sou apaixonada pela Disney resolvi fazer uma aplicação para pesquisar os personagens e renderizar na tela. 
 Alguns meses depois durante o recesso resolvi aprofundar mais os meus conhecimentos em CSS e conheci [Material UI](https://mui.com/) e resolvi estilizar o projeto com essa ferramenta. 
