@@ -25,7 +25,7 @@ const theme = createTheme({
 class Header extends React.Component {
 
   render() {
-    const { handleChange, handleKeyPress, disneyCharacter } = this.props;
+    const { handleChange, handleKeyPress, disneyCharacter, onClickHeader } = this.props;
 
     return (
     <ThemeProvider theme={theme}>
@@ -36,8 +36,7 @@ class Header extends React.Component {
             <Typography
               variant="h6"
               noWrap
-              component="a"
-              href="/disney-characters"
+              onClick={onClickHeader}
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
@@ -49,6 +48,7 @@ class Header extends React.Component {
                 fontSize: 30,
                 marginRight: 15,
                 marginLeft: 3,
+                cursor: 'pointer'
               }}
             >
               Disney Characters

@@ -45,6 +45,12 @@ class App extends React.Component {
     dispatch(fetchAllCharacters());
   }
 
+  onClickHeader = () => {
+    this.setState({
+      search: false,
+    });
+  }
+
 
   render() {
     const { disneyCharacter, search } = this.state;
@@ -57,6 +63,7 @@ class App extends React.Component {
           handleChange={this.handleChange}
           handleKeyPress={this.handleKeyPress}
           disneyCharacter={disneyCharacter}
+          onClickHeader={ this.onClickHeader }
         />
         {searchCharacter ?
           <Container style={{
