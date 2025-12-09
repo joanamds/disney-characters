@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/disney-characters/static/css/main.fb532045.css",
-    "main.js": "/disney-characters/static/js/main.6adf0656.js",
+    "main.css": "/disney-characters/static/css/main.036fe741.css",
+    "main.js": "/disney-characters/static/js/main.64d4b474.js",
     "static/media/mickey-confused.gif": "/disney-characters/static/media/mickey-confused.2dc67be5c72e95febcdb.gif",
+    "static/media/Disney.ttf": "/disney-characters/static/media/Disney.b9ec338436dad1110bc1.ttf",
     "static/media/loading-disney.gif": "/disney-characters/static/media/loading-disney.bcfa7dbdb23c5c78b86b.gif",
     "index.html": "/disney-characters/index.html",
-    "main.fb532045.css.map": "/disney-characters/static/css/main.fb532045.css.map",
-    "main.6adf0656.js.map": "/disney-characters/static/js/main.6adf0656.js.map"
+    "main.036fe741.css.map": "/disney-characters/static/css/main.036fe741.css.map",
+    "main.64d4b474.js.map": "/disney-characters/static/js/main.64d4b474.js.map"
   },
   "entrypoints": [
-    "static/css/main.fb532045.css",
-    "static/js/main.6adf0656.js"
+    "static/css/main.036fe741.css",
+    "static/js/main.64d4b474.js"
   ]
 }
