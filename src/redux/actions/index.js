@@ -37,9 +37,10 @@ export const fetchAllCharacters = () => {
   return async (dispatch) => {
     try {
       dispatch(requestAPI());
-      const response = await fetch(`https://api.disneyapi.dev/characters`);
+      const response = await fetch(`https://api.disneyapi.dev/character`);
       const characters = await response.json();
       const { data } = characters;
+      console.log(data);
       return dispatch(getCharacters(data));
     } catch (error) {
       console.error(error);
