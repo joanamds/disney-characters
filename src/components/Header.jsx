@@ -41,11 +41,11 @@ class Header extends React.Component {
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
                 fontFamily: 'WaltographRegular',
-                fontWeight: 700,
+                fontWeight: 300,
                 letterSpacing: '.3rem',
                 color: 'white',
                 textDecoration: 'none',
-                fontSize: 30,
+                fontSize: 50,
                 marginRight: 15,
                 marginLeft: 3,
                 cursor: 'pointer'

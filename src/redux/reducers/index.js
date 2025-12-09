@@ -30,10 +30,6 @@ const rootReducer = (state = INITIAL_STATE, action) => {
         characterFound: true,
         searchCharacter: false,
         characters: action.payload,
-        // name: action.payload.name,
-        // imageUrl: action.payload.imageUrl,
-        // films: action.payload.films[0],
-        // tvShows: action.payload.tvShows[0],
       };
     }
     case NOT_FOUND: {
