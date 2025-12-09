@@ -15,7 +15,6 @@ class App extends React.Component {
     super(props);
     this.state = {
       disneyCharacter: '',
-      search: false,
     }
   }
 
@@ -34,7 +33,6 @@ class App extends React.Component {
         dispatch(fetchCharacter(disneyCharacter));
         this.setState({
           disneyCharacter: '',
-          search: true,
         });
       }
     }
@@ -55,8 +53,8 @@ class App extends React.Component {
 
 
   render() {
-    const { disneyCharacter, search } = this.state;
-    const { name, imageUrl, films, tvShows, characterFound, searchCharacter, characters } = this.props;
+    const { disneyCharacter } = this.state;
+    const { characterFound, searchCharacter, characters } = this.props;
     console.log(characters);
 
     return (
@@ -78,43 +76,37 @@ class App extends React.Component {
           </Container>
           : (
             <div>
-              {search ? (
-                <Container style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginTop: 40,
-                  marginBottom: 80,
-                }}>
-                  <CharacterCard
-                    name={name}
-                    imageUrl={imageUrl}
-                    films={films}
-                    tvShows={tvShows}
-                    characterFound={characterFound}
-                  />
-                </Container>
-              ) : (
                 <Grid
-                  container
-                  spacing={{ xs: 2, md: 3 }}
-                  columns={{ xs: 4, sm: 8, md: 12 }}
-                  sx={{ flexGrow: 1 }}
-                  alignItems="center"
-                  justifyContent="center"
-                >
-                  {characters.map((character) => {
-                    return (<CharacterCard
-                      name={character.name}
-                      imageUrl={character.imageUrl}
-                      films={character.films[0]}
-                      tvShows={character.tvShows[0]}
-                      characterFound={characterFound}
-                      searchCharacter={searchCharacter}
-                    />)
-                  })}
-                </Grid>
-              )}
+  container
+  spacing={{ xs: 2, md: 3 }}
+  columns={{ xs: 4, sm: 8, md: 12 }}
+  sx={{ flexGrow: 1 }}
+  alignItems="center"
+  justifyContent="center"
+>
+  {Array.isArray(characters)
+    ? characters.map((character) => (
+        <CharacterCard
+          key={character.name} // ou character.id, se tiver
+          name={character.name}
+          imageUrl={character.imageUrl}
+          films={character.films?.[0]}
+          tvShows={character.tvShows?.[0]}
+          characterFound={characterFound}
+          searchCharacter={searchCharacter}
+        />
+      ))
+    : characters && (
+        <CharacterCard
+          name={characters.name}
+          imageUrl={characters.imageUrl}
+          films={characters.films?.[0]}
+          tvShows={characters.tvShows?.[0]}
+          characterFound={characterFound}
+          searchCharacter={searchCharacter}
+        />
+      )}
+</Grid>
             </div>
           )}
       </div>

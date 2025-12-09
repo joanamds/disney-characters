@@ -1,16 +1,16 @@
-import { GET_CHARACTER, REQUEST_CHARACTER, NOT_FOUND, GET_CHARACTERS } from "../reducers";
+import { GET_CHARACTERS, REQUEST_CHARACTER, NOT_FOUND, SEARCH_CHARACTERS } from "../reducers";
 
 export const requestAPI = () => ({
   type: REQUEST_CHARACTER,
 });
 
-export const getCharacter = (payload) => ({
-  type: GET_CHARACTER,
+export const getCharacters = (payload) => ({
+  type: GET_CHARACTERS,
   payload,
 });
 
-export const getCharacters = (payload) => ({
-  type: GET_CHARACTERS,
+export const searchCharacters = (payload) => ({
+  type: SEARCH_CHARACTERS,
   payload,
 });
 
@@ -26,7 +26,7 @@ export const fetchCharacter = (name) => {
       const characterFound = await response.json();
       const { data } = characterFound;
       if (data.length === 0) return dispatch(notFound());
-      return dispatch(getCharacter(data[0]));
+      return dispatch(searchCharacters(data));
     } catch(error) {
       console.error(error);
     }
@@ -40,7 +40,6 @@ export const fetchAllCharacters = () => {
       const response = await fetch(`https://api.disneyapi.dev/character`);
       const characters = await response.json();
       const { data } = characters;
-      console.log(data);
       return dispatch(getCharacters(data));
     } catch (error) {
       console.error(error);

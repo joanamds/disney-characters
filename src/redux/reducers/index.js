@@ -8,7 +8,7 @@ const INITIAL_STATE = {
   characters: [],
 }
 
-export const GET_CHARACTER = 'GET_CHARACTER';
+export const SEARCH_CHARACTERS = 'SEARCH_CHARACTERS';
 
 export const REQUEST_CHARACTER = 'REQUEST_CHARACTER';
 
@@ -24,15 +24,16 @@ const rootReducer = (state = INITIAL_STATE, action) => {
         searchCharacter: true,
       }
     }
-    case GET_CHARACTER: {
+    case SEARCH_CHARACTERS: {
       return {
         ...state,
         characterFound: true,
         searchCharacter: false,
-        name: action.payload.name,
-        imageUrl: action.payload.imageUrl,
-        films: action.payload.films[0],
-        tvShows: action.payload.tvShows[0],
+        characters: action.payload,
+        // name: action.payload.name,
+        // imageUrl: action.payload.imageUrl,
+        // films: action.payload.films[0],
+        // tvShows: action.payload.tvShows[0],
       };
     }
     case NOT_FOUND: {

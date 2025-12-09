@@ -44,7 +44,7 @@ class CharacterCard extends React.Component {
               </CardContent>
             </Card>
             : (
-              <Card sx={{ minHeight: '500px', width: 320 }}>
+              <Card sx={{ minHeight: '500px', width: 320, marginTop: 10, marginRight: 10 }}>
                 <CardCover>
                   <img
                     src={MickeyConfused}
